@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+    <head>
+        <title>
+            Beat-Beat-It
+        </title>
+
+        <style>
+            div {
+                display: flexbox;
+                background-color: aqua;
+                padding: 0.5px;
+                border: 7px solid;
+                border-color:indigo;
+                width: 15em;
+                box-shadow: 4px 4px 4px #444;
+                margin: 15px;
+                transition: all 0.07s;
+                
+            }
+            .playing {
+                transform: scale(1.2);
+                border-color:magenta;
+            }
+            p{
+                text-align: center;
+                text-decoration: midnightblue;
+                font-size: 20px;
+                text-emphasis: bold;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="key" data-key="65" onclick="clickAudio(65)">
+            <p>A</p>
+        </div>
+        <div class="key" data-key="66" onclick="clickAudio(66)">
+            <p>B</p>
+        </div>
+        <div class="key" data-key="67" onclick="clickAudio(67)">
+            <p>C</p>
+        </div>
+        <div class="key" data-key="68" onclick="clickAudio(68)">
+            <p>D</p>
+        </div>
+        <div class="key" data-key="69" onclick="clickAudio(69)">
+            <p>E</p>
+        </div>
+        <div class="key" data-key="70" onclick="clickAudio(70)">
+            <p>F</p>
+        </div>
+
+        <audio data-key="65" src="sounds/bubble.mp3"></audio>
+        <audio data-key="66" src="sounds/cartoon_pop.mp3"></audio>
+        <audio data-key="67" src="sounds/drum1.mp3"></audio>
+        <audio data-key="68" src="sounds/drum2.mp3"></audio>
+        <audio data-key="69" src="sounds/drum3.mp3"></audio>
+        <audio data-key="70" src="sounds/meow.mp3"></audio>
+    
+
+    <script>
+        window.addEventListener('keydown', playAudio);
+        //document.getElementsByTagName("div").addEventListener('onclick', playAudio);
+        
+        function playAudio(e){
+            var audio = null;
+            var key = null;
+            if(e.keyCode === 65){
+                 audio = document.querySelector('audio[data-key="65"]');
+                 key = document.querySelector('.key[data-key="65"]');
+            }
+            else if(e.keyCode === 66){
+                 audio = document.querySelector('audio[data-key="66"]');
+                 key = document.querySelector('.key[data-key="66"]');
+            }
+            else if(e.keyCode === 67){
+                 audio = document.querySelector('audio[data-key="67"]');
+                 key = document.querySelector('.key[data-key="67"]');
+            }
+            else if(e.keyCode === 68){
+                 audio = document.querySelector('audio[data-key="68"]');
+                 key = document.querySelector('.key[data-key="68"]');
+            }
+            else if(e.keyCode === 69){
+                 audio = document.querySelector('audio[data-key="69"]');
+                 key = document.querySelector('.key[data-key="69"]');
+            }
+            else if(e.keyCode === 70){
+                 audio = document.querySelector('audio[data-key="70"]');
+                 key = document.querySelector('.key[data-key="70"]');
+            }
+            else
+                return;
+            audio.currentTime = 0;
+            audio.play();
+            //console.log(key);
+            key.classList.add('playing');
+        }
+
+        function removeTransition(e){
+            //if(e.propertyName !== 'transform') return;
+            this.classList.remove('playing');
+            //console.log(this);
+            
+        }
+
+        function clickAudio(keyCode){
+            var audio = null;
+            var key = null;
+            if(keyCode === 65){
+                 audio = document.querySelector('audio[data-key="65"]');
+                 key = document.querySelector('.key[data-key="65"]');
+            }
+            else if(keyCode === 66){
+                 audio = document.querySelector('audio[data-key="66"]');
+                 key = document.querySelector('.key[data-key="66"]');
+            }
+            else if(keyCode === 67){
+                 audio = document.querySelector('audio[data-key="67"]');
+                 key = document.querySelector('.key[data-key="67"]');
+            }
+            else if(keyCode === 68){
+                 audio = document.querySelector('audio[data-key="68"]');
+                 key = document.querySelector('.key[data-key="68"]');
+            }
+            else if(keyCode === 69){
+                 audio = document.querySelector('audio[data-key="69"]');
+                 key = document.querySelector('.key[data-key="69"]');
+            }
+            else if(keyCode === 70){
+                 audio = document.querySelector('audio[data-key="70"]');
+                 key = document.querySelector('.key[data-key="70"]');
+            }
+            else
+                return;
+            audio.currentTime = 0;
+            audio.play();
+            //console.log(key);
+            key.classList.add('playing');
+        }
+
+        const keys = document.querySelectorAll(".key");
+        keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+    
+    </script>
+
+    </body>
+
+
+</html>
